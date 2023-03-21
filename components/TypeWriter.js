@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Typewriter from "typewriter-effect";
 
 const vlieger = [
@@ -42,25 +43,30 @@ const vlieger = [
 ]
 
 const sorted = vlieger.join('').split("<br/>").join('').split('').sort().join("");
-const letters = sorted.split('').filter(letter => letter !== ' ')
-const letterCount = letters.reduce((acc, letter) => {
-  const found = acc.find(obj => obj.letter === letter)
-  if (found) {
-    found.count++
-  } else {
-    acc.push({ letter, count: 1 })
-  }
-  return acc
-}, [])
 
-console.log('letterCount: ', letterCount);
+function getLetterCount(textString) {
+  const sorted = textString.toLowerCase().split('').sort().join('');
+  const letters = sorted.split('').filter(letter => letter !== ' ')
+  return letters.reduce((acc, letter) => {
+    const found = acc.find(obj => obj.letter === letter)
+    if (found) {
+      found.count++
+    } else {
+      acc.push({ letter, count: 1 })
+    }
+    return acc
+  }, [])
+}
 
 export default function TypeWriter() {
+
+  const [typedLetters, setTypedLetters] = useState('');
+
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>{
-        letterCount.map((obj, index) => {
-          return <span key={index} style={{ margin: "5px", lineHeight: '30px', fontSize: `${20 + obj.count}px` }}>{obj.letter}</span>
+    <div style={{ display: "grid", gridTemplateColumns: "50% 50%", minHeight: 'calc(100vh - 12rem)' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', padding: '1rem 2rem', gap: '1rem', justifyContent: 'center', animation: '0.5s all linear' }}>{
+        getLetterCount(typedLetters).map((obj, index) => {
+          return <span key={index} style={{ margin: "5px", lineHeight: '30px', fontSize: `${16 + obj.count}px` }}>{obj.letter}</span>
         })
       }</div>
       <div>
@@ -77,6 +83,9 @@ export default function TypeWriter() {
                 typewriter
                   .typeString(sentence)
                   .start()
+                  .callFunction(() => {
+                    setTypedLetters((text) => text + sentence)
+                  })
                   .pauseFor(500)
               }
             }
