@@ -64,9 +64,12 @@ export default function TypeWriter() {
 
   return (
     <div style={{ display: "grid", gridTemplateColumns: "50% 50%", minHeight: 'calc(100vh - 12rem)' }}>
-      <div style={{ display: 'flex', flexWrap: 'wrap', padding: '1rem 2rem', gap: '1rem', justifyContent: 'center', animation: '0.5s all linear' }}>{
+      <div style={{ display: 'flex', flexWrap: 'wrap', padding: '1rem 2rem', gap: '1rem', justifyContent: 'center', alignContent: 'flex-start', animation: '0.5s all linear' }}>{
         getLetterCount(typedLetters).map((obj, index) => {
-          return <span key={index} style={{ margin: "5px", lineHeight: '30px', fontSize: `${16 + obj.count}px` }}>{obj.letter}</span>
+          const red = Math.min(255, 125 + obj.count * 2)
+          const green = Math.min(255, 50 + obj.count * 3)
+          const blue = Math.min(255, 100 + obj.count * 1.7)
+          return <span key={index} style={{ margin: "5px", lineHeight: '75px', fontSize: `${16 + obj.count}px`, color: `rgb(${red}, ${green}, ${blue})` }}>{obj.letter}</span>
         })
       }</div>
       <div>
@@ -90,9 +93,6 @@ export default function TypeWriter() {
               }
             }
             )
-            // .callFunction(() => {
-            //   console.log("String typed out!");
-            // })
           }}
         />
       </div>

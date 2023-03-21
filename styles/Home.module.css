@@ -3,8 +3,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center; */
+  background: linear-gradient(#000040, #37306B);
   padding: 6rem;
   min-height: 100vh;
+  line-height: 1.4;
 }
 
 .description {
