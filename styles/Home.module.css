@@ -4,10 +4,22 @@
   justify-content: space-between;
   align-items: center; */
   background: linear-gradient(#000040, #37306B);
-  padding: 6rem;
+  padding: 2rem 1rem;
   min-height: 100vh;
-  line-height: 1.4;
+  line-height: 1.6;
+  font-size: 24px;
+  letter-spacing: 0.6px;
+  max-width: 1280px;
+  margin: 0 auto;
 }
+
+@media (min-width: 701px)  {
+  .main {
+    padding: 6rem;
+  }
+}
+
+
 
 .description {
   display: inherit;
@@ -277,4 +289,29 @@
   to {
     transform: rotate(0deg);
   }
+}
+
+.poemContainer {
+  min-height: calc(100vh - 12rem);
+}
+
+@media (min-width: 701px)  {
+  .poemContainer {
+    display: grid;
+    grid-template-columns: 40% 60%;
+  }
+}
+
+.letters {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 2rem;
+  justify-content: center;
+  align-content: flex-start;
+  animation: 0.5s all linear;
+  gap: 10px
+}
+
+.poem {
+  padding: 1rem 2rem;
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Typewriter from "typewriter-effect";
+import styles from '@/styles/Home.module.css'
 
 const vlieger = [
   `LUCHTPOST`,
@@ -63,16 +64,16 @@ export default function TypeWriter() {
   const [typedLetters, setTypedLetters] = useState('');
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "50% 50%", minHeight: 'calc(100vh - 12rem)' }}>
-      <div style={{ display: 'flex', flexWrap: 'wrap', padding: '1rem 2rem', gap: '1rem', justifyContent: 'center', alignContent: 'flex-start', animation: '0.5s all linear' }}>{
+    <div className={styles.poemContainer}>
+      <div className={styles.letters}>{
         getLetterCount(typedLetters).map((obj, index) => {
           const red = Math.min(255, 125 + obj.count * 2)
           const green = Math.min(255, 50 + obj.count * 3)
           const blue = Math.min(255, 100 + obj.count * 1.7)
-          return <span key={index} style={{ margin: "5px", lineHeight: '75px', fontSize: `${16 + obj.count}px`, color: `rgb(${red}, ${green}, ${blue})` }}>{obj.letter}</span>
+          return <span key={index} style={{ margin: "5px", lineHeight: `100px`, fontSize: `${16 + obj.count}px`, color: `rgb(${red}, ${green}, ${blue})` }}>{obj.letter}</span>
         })
       }</div>
-      <div>
+      <div className={styles.poem}>
         <Typewriter
           onInit={(typewriter) => {
             vlieger.forEach(sentence => {
