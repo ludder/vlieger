@@ -67,10 +67,10 @@ export default function TypeWriter() {
     <div className={styles.poemContainer}>
       <div className={styles.letters}>{
         getLetterCount(typedLetters).map((obj, index) => {
-          const red = Math.min(255, 100 + obj.count * 1.8)
-          const green = Math.min(235, 50 + obj.count * 2)
+          const red = Math.min(255, 100 + obj.count * 2)
+          const green = Math.min(240, 50 + obj.count * 2)
           const blue = Math.min(255, 120 + obj.count * 1.7)
-          const fontSize = `${18 + (obj.count * 2.4)}px`
+          const fontSize = `${18 + (obj.count * 4)}px`
           return <span key={index} style={{ margin: "5px", lineHeight: `100px`, fontSize, color: `rgb(${red}, ${green}, ${blue})` }}>{obj.letter}</span>
         })
       }</div>
@@ -100,6 +100,7 @@ export default function TypeWriter() {
           }}
         />
       </div>
+
     </div>
   );
 }
