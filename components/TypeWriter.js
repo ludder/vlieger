@@ -77,6 +77,7 @@ export default function TypeWriter() {
       <div className={styles.poem}>
         <Typewriter
           onInit={(typewriter) => {
+            let typed = ''
             vlieger.forEach(sentence => {
               typewriter
                 .changeDelay(30)
@@ -89,7 +90,8 @@ export default function TypeWriter() {
                   .typeString(sentence)
                   .start()
                   .callFunction(() => {
-                    setTypedLetters((text) => text + sentence)
+                    typed += sentence
+                    setTypedLetters(typed)
                   })
                   .pauseFor(500)
               }
