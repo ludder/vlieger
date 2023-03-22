@@ -313,5 +313,10 @@
 }
 
 .poem {
-  padding: 1rem 2rem;
+  padding: 3rem 2rem;
+}
+@media (min-width: 701px)  {
+  .poem {
+    padding-top: 1rem;
+  }
 }
