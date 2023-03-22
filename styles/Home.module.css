@@ -1,9 +1,4 @@
 .main {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center; */
-  background: linear-gradient(#000040, #37306B);
   padding: 2rem 1rem;
   min-height: 100vh;
   line-height: 1.6;
